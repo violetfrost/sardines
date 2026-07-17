@@ -43,10 +43,6 @@ function render_cards(cards) {
 
         div.addEventListener("click", async (e) => {
             await navigator.clipboard.writeText(card.text);
-
-            setTimeout(() => {
-                div.style.opacity = "1";
-            }, 150);
         });
 
         div.addEventListener("contextmenu", async (e) => {

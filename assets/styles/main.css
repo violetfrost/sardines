@@ -32,10 +32,11 @@ body {
 
 .content {
     width: 100vw;
+    height: 100vh;
     max-width: 600px;
     text-align: center;
-    margin: 0 auto;
     padding: 15px;
+    margin: 0 auto;
     overflow: scroll;
 }
 
@@ -58,6 +59,7 @@ body {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 12px;
+    margin-bottom: 50px;
 }
 
 .card {
@@ -67,16 +69,22 @@ body {
     cursor: pointer;
     user-select: none;
     background-color: #111111;
+    overflow: hidden;
+    box-sizing: border-box;
+    height: 200px;
+    display: flex;
+    flex-direction: column;
 }
 
 .card h1 {
     font-size: 1rem;
     margin: 0 0 8px;
+    flex: 0 0 auto;
 }
 
 .card p {
     margin: 0;
+    flex: 1 1 auto;
     max-height: 4.5em;
-    min-height: 4.5em;
-    overflow: hidden;
+    min-height: 0;
 }
