@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+    <meta charset='utf-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <title>Sardines!</title>
+
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png">
+    <link rel="manifest" href="assets/favicon/site.webmanifest">
+
+    <link rel='stylesheet' href='assets/styles/main.css'>
+</head>
+
+<body>
+    <div class="content">
+
+        <div class="toolbar">
+            <button id="import_button">Import JSON</button>
+
+            <button id="help_button">Help</button>
+            <input type="file" id="finput" accept=".json" hidden>
+            <input type="search" id="search" disabled="true" placeholder="Search Responses">
+        </div>
+
+        <h3 style="text-align: left;" id="header_text"></h3>
+
+        <div class="card-grid" id="card_grid">
+        </div>
+
+    </div>
+
+    <script type="module">
+        import Fuse from 'https://cdn.jsdelivr.net/npm/fuse.js@7.5.0/dist/fuse.mjs';
+        window.Fuse = Fuse;
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/tv4@1.3.0/tv4.min.js"></script>
+    <script src="assets/js/schema.js"></script>
+    <script src="assets/js/sardines.js"></script>
+</body>
+
+</html>

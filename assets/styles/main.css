@@ -1,0 +1,82 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+main,
+body {
+    padding: 0;
+    margin: 0;
+    background-color: #222222;
+    color: #ffffff;
+}
+
+p {
+    font-family: "Inter", sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: "Inter", sans-serif;
+    font-weight: 700;
+}
+
+body {
+    background: linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.85)), url("../sardines.png") no-repeat center, #222222;
+    background-size: 20%;
+    overflow: hidden;
+    height: 100vh;
+    image-rendering: pixelated;
+}
+
+.content {
+    width: 100vw;
+    max-width: 600px;
+    text-align: center;
+    margin: 0 auto;
+    padding: 15px;
+    overflow: scroll;
+}
+
+.toolbar {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.toolbar button {
+    flex: 0 0 auto;
+}
+
+.toolbar input {
+    flex: 1;
+    min-width: 0;
+}
+
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+}
+
+.card {
+    padding: 10px;
+    border: 1px solid #ffffff;
+    text-align: left;
+    cursor: pointer;
+    user-select: none;
+    background-color: #111111;
+}
+
+.card h1 {
+    font-size: 1rem;
+    margin: 0 0 8px;
+}
+
+.card p {
+    margin: 0;
+    max-height: 4.5em;
+    min-height: 4.5em;
+    overflow: hidden;
+}
