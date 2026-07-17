@@ -4,5 +4,5 @@
 const return_button = document.getElementById("return_button");
 
 return_button.addEventListener("click", () => {
-    window.location.href = "https://violetfrost.github.io/projects/sardines"
+    window.location.href = "https://violetfrost.github.io/sardines"
 });

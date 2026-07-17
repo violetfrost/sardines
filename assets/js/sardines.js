@@ -99,7 +99,7 @@ import_button.addEventListener("click", () => {
 });
 
 help_button.addEventListener("click", () => {
-    window.location.href = "https://violetfrost.github.io/projects/sardines/help"
+    window.location.href = "https://violetfrost.github.io/sardines/help"
 });
 
 file_input.addEventListener("change", async (event) => {
