@@ -42,13 +42,14 @@ function render_cards(cards) {
         text.textContent = card.text;
 
         div.addEventListener("click", async (e) => {
-            await navigator.clipboard.writeText(card.text);
-
+            
             // stupid workaround
             // because currenttarget is only valid
             // when the event is being handled -V
             const card_div = e.currentTarget; 
-            
+
+            await navigator.clipboard.writeText(card.text);
+
             card_div.className = "card copied";
             await setTimeout(() => {
                 card_div.className = "card";
