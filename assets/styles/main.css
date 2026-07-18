@@ -82,6 +82,11 @@ body {
     background-color: #11111180;
 }
 
+.favorited
+{
+    border: 1px solid #ffff00 !important;
+}
+
 .card h1 {
     font-size: 1rem;
     margin: 0 0 8px;

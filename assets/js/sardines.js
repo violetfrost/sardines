@@ -30,10 +30,15 @@ function search_cards() {
 
 function render_cards(cards) {
     card_grid.innerHTML = "";
+    
+    // Is this too slow for large decks? works for now
+    // might be better to just manually put them into another list or change the schema though...
+    // food for thought!
+    cards.sort((a, b) => (b.favorited === true) - (a.favorited === true));
 
     cards.forEach(card => {
         const div = document.createElement("div");
-        div.className = "card";
+        div.className = card.favorited ? "card favorited" : "card";
 
         const title = document.createElement("h1");
         title.textContent = card.title;
@@ -50,16 +55,17 @@ function render_cards(cards) {
 
             await navigator.clipboard.writeText(card.text);
 
-            card_div.className = "card copied";
+            card_div.classList.add("copied");
             await setTimeout(() => {
-                card_div.className = "card";
+                card_div.classList.remove("copied");
             }, 1000);
         });
 
         div.addEventListener("contextmenu", async (e) => {
             e.preventDefault();
-
-            // TODO something to do with favorites
+            card.favorited = !card.favorited;
+            local_storage_write();
+            render_cards(cards);
         });
 
         div.appendChild(title);
@@ -91,6 +97,7 @@ async function read_json() {
 
             await render_cards(json.cards);
             header_text.textContent = json.deck_name;
+            local_storage_write();
 
             return true;
         }
@@ -98,6 +105,32 @@ async function read_json() {
     } catch (err) {
         console.error("Invalid JSON:", err);
         return false;
+    }
+}
+
+/**
+ * Write the current internal JSON state to local storage
+ */
+async function local_storage_write()
+{
+    localStorage.setItem("user_state", JSON.stringify(json));
+}
+
+/**
+ * Read the current local storage state to internal JSON, if it exists 
+ */
+async function local_storage_read()
+{
+    var ls = localStorage.getItem("user_state");
+    if(ls)
+    {
+        // TODO this probbly needs more robust error handling... not a huge priority
+        // as it SHOULD hopefully only break if someone goes poking around... probably....
+        json = JSON.parse(ls);
+
+        render_cards(json.cards);
+        header_text.textContent = json.deck_name;
+        search.disabled = false;
     }
 }
 
@@ -122,3 +155,5 @@ file_input.addEventListener("change", async (event) => {
 search.addEventListener("input", search_cards);
 search.value = "";
 search.disabled = true;
+
+local_storage_read();
