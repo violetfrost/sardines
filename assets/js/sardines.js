@@ -30,7 +30,7 @@ function search_cards() {
 
 function render_cards(cards) {
     card_grid.innerHTML = "";
-    
+
     // Is this too slow for large decks? works for now
     // might be better to just manually put them into another list or change the schema though...
     // food for thought!
@@ -47,11 +47,11 @@ function render_cards(cards) {
         text.textContent = card.text;
 
         div.addEventListener("click", async (e) => {
-            
+
             // stupid workaround
             // because currenttarget is only valid
             // when the event is being handled -V
-            const card_div = e.currentTarget; 
+            const card_div = e.currentTarget;
 
             await navigator.clipboard.writeText(card.text);
 
@@ -111,19 +111,16 @@ async function read_json() {
 /**
  * Write the current internal JSON state to local storage
  */
-async function local_storage_write()
-{
+async function local_storage_write() {
     localStorage.setItem("user_state", JSON.stringify(json));
 }
 
 /**
  * Read the current local storage state to internal JSON, if it exists 
  */
-async function local_storage_read()
-{
+async function local_storage_read() {
     var ls = localStorage.getItem("user_state");
-    if(ls)
-    {
+    if (ls) {
         // TODO this probbly needs more robust error handling... not a huge priority
         // as it SHOULD hopefully only break if someone goes poking around... probably....
         json = JSON.parse(ls);
@@ -136,10 +133,6 @@ async function local_storage_read()
 
 import_button.addEventListener("click", () => {
     file_input.click();
-});
-
-help_button.addEventListener("click", () => {
-    window.location.href = "https://violetfrost.github.io/sardines/help"
 });
 
 file_input.addEventListener("change", async (event) => {
