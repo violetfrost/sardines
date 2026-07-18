@@ -76,6 +76,12 @@ body {
     flex-direction: column;
 }
 
+.copied
+{
+    border: 1px solid #00ff00 !important;
+    background-color: #11111180;
+}
+
 .card h1 {
     font-size: 1rem;
     margin: 0 0 8px;
@@ -85,6 +91,5 @@ body {
 .card p {
     margin: 0;
     flex: 1 1 auto;
-    max-height: 4.5em;
-    min-height: 0;
+    height: 100%;
 }
