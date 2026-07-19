@@ -5,9 +5,22 @@ const sardines_schema = {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "title": "Sardines Deck Schema",
   "type": "object",
-  "properties": {
-    "deck_name": {
-      "type": "string"
+  "properties": { 
+    "version": {
+      "type": "integer"
+    },
+    "deck": {
+      "name": {
+        "type": "string"
+      },
+      "categories": {
+        "type": "array",
+        "maxItems": "9"
+      },
+      "required": [
+        "name",
+        "categories"
+      ]
     },
     "cards": {
       "type": "array",
@@ -35,7 +48,8 @@ const sardines_schema = {
     }
   },
   "required": [
-    "deck_name",
+    "version",
+    "deck",
     "cards"
   ]
 }

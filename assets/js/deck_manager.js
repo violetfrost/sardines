@@ -5,6 +5,7 @@ function load_json(json) {
             app_state.fuse = new Fuse(app_state.json.cards, {
                 keys: [
                     "title",
+                    "category",
                     "text"
                 ],
                 threshold: 0.35,
@@ -12,7 +13,8 @@ function load_json(json) {
             });
 
             render_cards(app_state.json.cards);
-            app_state.dom.header_text.textContent = json.deck_name;
+            app_state.dom.header_text.textContent = json.deck.name;
+            app_state.dom.search.disabled = false;
             save_to_local_storage();
             return true;
         }
@@ -43,8 +45,18 @@ function load_from_local_storage() {
     if (ls) {
         // TODO this probbly needs more robust error handling... not a huge priority
         // as it SHOULD hopefully only break if someone goes poking around... probably....
-        load_json(JSON.parse(ls));
+        
+        if(!load_json(JSON.parse(ls)))
+        {
+            alert("Your session has been reset as the local storage data was made invalid.");
+            localStorage.removeItem("user_state");
+        }
     }
+}
+
+function is_category_valid(category)
+{
+    return app_state.json.deck.categories.includes(category);
 }
 
 function search_cards() {

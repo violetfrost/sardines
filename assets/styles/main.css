@@ -22,6 +22,12 @@ h6 {
     font-weight: 700;
 }
 
+.category {
+    line-height: 30px;
+    font-weight: 300;
+    margin: 0px;
+}
+
 body {
     background: linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.85)), url("../sardines.png") no-repeat center, #222222;
     background-size: 20%;
@@ -33,7 +39,7 @@ body {
 .content {
     width: 100vw;
     height: 100vh;
-    max-width: 600px;
+    max-width: 850px;
     text-align: center;
     padding: 15px;
     margin: 0 auto;
@@ -42,17 +48,35 @@ body {
 
 .toolbar {
     display: flex;
-    gap: 10px;
+    flex-wrap: wrap;
     margin-bottom: 20px;
 }
 
 .toolbar button {
+    width: auto;
     flex: 0 0 auto;
+    margin: 0px 5px 0px 0px;
 }
 
 .toolbar input {
     flex: 1;
     min-width: 0;
+}
+
+.tabs {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
+    gap: 5px;
+    width: 100%;
+    flex-basis: 100%;
+    padding-top: 10px;
+}
+
+.tabs button {
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .card-grid {
@@ -76,15 +100,13 @@ body {
     flex-direction: column;
 }
 
-.copied
-{
+.copied {
     border: 1px solid #00ff00 !important;
     background-color: #11111180;
 }
 
-.favorited
-{
-    border: 1px solid #ffff00 !important;
+.favorited {
+    border: 1px solid #ffff00;
 }
 
 .card h1 {
@@ -95,6 +117,10 @@ body {
 
 .card p {
     margin: 0;
-    flex: 1 1 auto;
-    height: 100%;
+    flex: 1;
+    min-height: 0;
+    overflow: hidden;
+
+
+    mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
 }

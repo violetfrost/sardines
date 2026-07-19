@@ -7,12 +7,22 @@ function render_cards(cards) {
     cards.sort((a, b) => (b.favorited === true) - (a.favorited === true));
 
     cards.forEach(card => {
+
+
+
+
         const div = document.createElement("div");
         div.className = card.favorited ? "card favorited" : "card";
 
+        if (is_category_valid(card.category)) {
+            const category = document.createElement("h4");
+            category.className = "category";
+            category.textContent = card.category;
+            div.appendChild(category);
+        }
+
         const title = document.createElement("h1");
         title.textContent = card.title;
-
         const text = document.createElement("p");
         text.textContent = card.text;
 
@@ -50,9 +60,11 @@ app_state.dom.import_button.addEventListener("click", () => {
 });
 
 app_state.dom.file_input.addEventListener("change", async (event) => {
-    if (await load_from_file(event))
-        app_state.dom.search.disabled = false
-    else alert("Invalid JSON!");
+    if(await !load_from_file(event))
+    {
+        alert("Invalid JSON!");
+    }
+    
     app_state.dom.file_input.value = "";
 });
 
